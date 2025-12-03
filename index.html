@@ -14,105 +14,146 @@
         :root {
             --primary: #6366f1;
             --secondary: #8b5cf6;
+            --accent: #ec4899;
             --success: #10b981;
             --warning: #f59e0b;
-            --danger: #ef4444;
             --dark: #1e293b;
             --light: #f8fafc;
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
+            --white: #ffffff;
         }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             min-height: 100vh;
-            color: white;
-            overflow-x: hidden;
-        }
-
-        body.light-theme {
-            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
             color: var(--dark);
-        }
-
-        /* Glassmorphism */
-        .glass {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
         }
 
         /* Header */
         .header {
-            text-align: center;
-            padding: 30px 0;
-            animation: fadeInDown 0.8s;
-        }
-
-        .header h1 {
-            font-size: 3em;
-            font-weight: 800;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .header p {
-            font-size: 1.3em;
-            opacity: 0.9;
-        }
-
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--glass-bg);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5em;
-            transition: all 0.3s;
+            padding: 20px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
             z-index: 1000;
         }
 
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(20deg);
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        /* Avatar Selection Screen */
-        .avatar-selection {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
+        .logo {
+            font-size: 1.8em;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Landing Page */
+        .landing {
+            text-align: center;
+            padding: 80px 20px;
             animation: fadeIn 1s;
         }
 
-        .avatar-card {
-            padding: 30px;
+        .landing h1 {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .landing p {
+            font-size: 1.5em;
+            color: white;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            font-size: 1.3em;
+            font-weight: 700;
+            background: white;
+            color: var(--primary);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Role Selection */
+        .role-selection {
+            animation: fadeIn 0.8s;
+        }
+
+        .role-selection h2 {
+            text-align: center;
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .role-card {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
         }
 
-        .avatar-card::before {
+        .role-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -122,363 +163,183 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             opacity: 0;
             transition: opacity 0.3s;
-            z-index: -1;
+            z-index: 0;
         }
 
-        .avatar-card:hover::before {
-            opacity: 0.2;
+        .role-card:hover::before {
+            opacity: 0.1;
         }
 
-        .avatar-card:hover {
+        .role-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
 
-        .avatar-icon {
+        .role-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .role-icon {
             font-size: 4em;
             margin-bottom: 15px;
             display: block;
         }
 
-        .avatar-card h3 {
+        .role-card h3 {
             font-size: 1.5em;
+            color: var(--dark);
             margin-bottom: 10px;
         }
 
-        .avatar-card p {
-            opacity: 0.8;
+        .role-card p {
+            color: #64748b;
             font-size: 0.95em;
         }
 
-        /* Context Input */
-        .context-input {
-            max-width: 600px;
-            margin: 30px auto;
-            padding: 30px;
-            text-align: center;
+        /* Scenario Input */
+        .scenario-input {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             animation: fadeIn 0.8s;
         }
 
-        .context-input h2 {
+        .scenario-input h2 {
             font-size: 2em;
-            margin-bottom: 20px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            text-align: center;
         }
 
-        .context-input input {
-            width: 100%;
-            padding: 15px 20px;
-            font-size: 1.1em;
-            border: 2px solid var(--glass-border);
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.1);
+        .selected-role-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            margin-bottom: 20px;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-bottom: 30px;
         }
 
-        .context-input input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+        .scenario-input label {
+            display: block;
+            font-size: 1.1em;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .scenario-input textarea {
+            width: 100%;
+            min-height: 200px;
+            padding: 20px;
+            font-size: 1.1em;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            resize: vertical;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .scenario-input textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .example-text {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
         }
 
         .btn {
-            padding: 15px 40px;
+            flex: 1;
+            padding: 15px;
             font-size: 1.1em;
             font-weight: 600;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
+        }
+
+        .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
         }
 
-        .btn:hover {
+        .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
         }
 
-        /* Conversation Screen */
-        .conversation-screen {
-            display: grid;
-            grid-template-columns: 1fr 350px;
-            gap: 20px;
+        .btn-secondary {
+            background: #e2e8f0;
+            color: var(--dark);
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        /* Conversation Page */
+        .conversation-page {
             animation: fadeIn 0.8s;
         }
 
-        .main-area {
+        .video-container {
+            background: white;
+            border-radius: 25px;
             padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
-        .avatar-display {
-            text-align: center;
-            margin-bottom: 30px;
+        .avatar-wrapper {
             position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .avatar-image {
-            width: 200px;
-            height: 200px;
+        .avatar {
+            width: 300px;
+            height: 300px;
             border-radius: 50%;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 6em;
-            margin: 0 auto 20px;
-            position: relative;
+            font-size: 10em;
             animation: float 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .avatar.speaking {
+            animation: float 3s ease-in-out infinite, pulse 0.8s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .avatar-image.speaking {
-            animation: pulse 1s infinite, float 3s ease-in-out infinite;
-        }
-
-        .waveform {
-            display: flex;
-            justify-content: center;
-            gap: 5px;
-            height: 50px;
-            align-items: center;
-            margin: 20px 0;
-        }
-
-        .wave-bar {
-            width: 4px;
-            background: white;
-            border-radius: 2px;
-            animation: wave 1s ease-in-out infinite;
-        }
-
-        .wave-bar:nth-child(1) { animation-delay: 0s; height: 10px; }
-        .wave-bar:nth-child(2) { animation-delay: 0.1s; height: 20px; }
-        .wave-bar:nth-child(3) { animation-delay: 0.2s; height: 30px; }
-        .wave-bar:nth-child(4) { animation-delay: 0.3s; height: 40px; }
-        .wave-bar:nth-child(5) { animation-delay: 0.4s; height: 30px; }
-        .wave-bar:nth-child(6) { animation-delay: 0.5s; height: 20px; }
-        .wave-bar:nth-child(7) { animation-delay: 0.6s; height: 10px; }
-
-        @keyframes wave {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.5); }
-        }
-
-        .subtitle-box {
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 15px;
-            min-height: 80px;
-            font-size: 1.2em;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .mic-btn {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: none;
-            background: linear-gradient(135deg, var(--danger), #dc2626);
-            color: white;
-            font-size: 2em;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
-        }
-
-        .mic-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .mic-btn.listening {
-            animation: pulse 1.5s infinite;
-            background: linear-gradient(135deg, var(--success), #059669);
-        }
-
-        .control-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 1.5em;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .control-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: scale(1.1);
-        }
-
-        /* Sidebar */
-        .sidebar {
-            padding: 20px;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-
-        .stat-card {
-            padding: 20px;
-            margin-bottom: 15px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-        }
-
-        .stat-card h3 {
-            font-size: 2.5em;
-            margin-bottom: 5px;
-        }
-
-        .stat-card p {
-            opacity: 0.9;
-        }
-
-        .transcript {
-            padding: 20px;
-            margin-bottom: 15px;
-            max-height: 300px;
-            overflow-y: auto;
-        }
-
-        .transcript h3 {
-            margin-bottom: 15px;
-        }
-
-        .transcript-item {
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-
-        .transcript-item.user {
-            background: rgba(99, 102, 241, 0.3);
-        }
-
-        .transcript-item.ai {
-            background: rgba(139, 92, 246, 0.3);
-        }
-
-        /* Report Screen */
-        .report-screen {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 30px;
-            animation: fadeIn 0.8s;
-        }
-
-        .report-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .report-header h2 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .score-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .score-card {
-            padding: 25px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .score-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--success), #059669);
-            opacity: 0.8;
-            z-index: -1;
-        }
-
-        .score-card.warning::before {
-            background: linear-gradient(135deg, var(--warning), #d97706);
-        }
-
-        .score-card.danger::before {
-            background: linear-gradient(135deg, var(--danger), #dc2626);
-        }
-
-        .score-value {
-            font-size: 3em;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .mistakes-section {
-            padding: 25px;
-            margin-bottom: 20px;
-        }
-
-        .mistake-item {
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-            background: rgba(239, 68, 68, 0.1);
-            border-left: 4px solid var(--danger);
-        }
-
-        .mistake-wrong {
-            color: var(--danger);
-            text-decoration: line-through;
-            font-weight: bold;
-        }
-
-        .mistake-correct {
-            color: var(--success);
-            font-weight: bold;
-        }
-
-        .recommendations {
-            padding: 25px;
-        }
-
-        .recommendations ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .recommendations li {
-            padding: 12px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 4px solid var(--success);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
         @keyframes pulse {
@@ -486,46 +347,219 @@
             50% { transform: scale(1.05); }
         }
 
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 40px;
+        .avatar-status {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top-color: white;
+        .status-dot {
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
+            background: var(--success);
+            animation: blink 1.5s infinite;
         }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
+        .chat-container {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: grid;
+            grid-template-rows: auto 1fr auto;
+            height: 500px;
+        }
+
+        .chat-header {
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 20px;
+        }
+
+        .chat-header h3 {
+            font-size: 1.5em;
+            color: var(--dark);
+        }
+
+        .chat-messages {
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+
+        .message {
+            margin-bottom: 20px;
+            animation: slideIn 0.3s;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message-avatar {
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+
+        .message-avatar.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .message-icon.ai {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .message-icon.user {
+            background: linear-gradient(135deg, var(--accent), #f472b6);
+        }
+
+        .message-content {
+            background: #f1f5f9;
+            padding: 15px 20px;
+            border-radius: 15px;
+            max-width: 70%;
+        }
+
+        .message-avatar.user .message-content {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+        }
+
+        .correction-box {
+            background: #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+
+        .correction-box strong {
+            color: var(--warning);
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1.05em;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .send-btn {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .send-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .end-session-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            background: var(--danger);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .end-session-btn:hover {
+            background: #dc2626;
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer p {
+            color: var(--dark);
+            font-size: 1.1em;
+        }
+
+        .footer strong {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Utility */
         .hidden {
             display: none !important;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .conversation-screen {
-                grid-template-columns: 1fr;
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .avatar-selection {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .header h1 {
-                font-size: 2em;
-            }
-
-            .score-grid {
-                grid-template-columns: 1fr;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
@@ -535,231 +569,260 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1);
+            background: #f1f5f9;
         }
 
         ::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
+            background: var(--primary);
             border-radius: 4px;
         }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .landing h1 {
+                font-size: 2.5em;
+            }
+
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-input {
+                padding: 30px 20px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .message-content {
+                max-width: 85%;
+            }
+        }
+
+        /* Listening indicator (hidden but functional) */
+        .listening-indicator {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 15px;
+            height: 15px;
+            background: var(--success);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .listening-indicator.active {
+            opacity: 1;
+            animation: blink 1s infinite;
         }
     </style>
 </head>
 <body>
-    <div class="theme-toggle" onclick="toggleTheme()">🌙</div>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">🎭 AI Avatar Coach</div>
+            <nav class="nav">
+                <a href="#" onclick="showLanding()">Home</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
     <div class="container">
-        <!-- Header -->
-        <div class="header">
+        <!-- Landing Page -->
+        <div id="landingPage" class="landing">
             <h1>🎭 AI Avatar English Coach</h1>
-            <p>Practice English with AI avatars - Speak naturally, improve fluently</p>
+            <p>Practice English with realistic AI avatars in natural conversations</p>
+            <button class="cta-button" onclick="showRoleSelection()">Select Your Role</button>
         </div>
 
-        <!-- Avatar Selection Screen -->
-        <div id="avatarSelectionScreen">
-            <div class="avatar-selection">
-                <div class="avatar-card glass" onclick="selectAvatar('teacher', '👩‍🏫')">
-                    <span class="avatar-icon">👩‍🏫</span>
-                    <h3>Teacher</h3>
-                    <p>Learn grammar, vocabulary, and pronunciation with a patient English teacher</p>
-                </div>
-                <div class="avatar-card glass" onclick="selectAvatar('interviewer', '🧑‍💼')">
-                    <span class="avatar-icon">🧑‍💼</span>
-                    <h3>Interviewer</h3>
-                    <p>Practice job interviews with realistic questions and professional feedback</p>
-                </div>
-                <div class="avatar-card glass" onclick="selectAvatar('friend', '🧑‍🤝‍🧑')">
-                    <span class="avatar-icon">🧑‍🤝‍🧑</span>
-                    <h3>Friend</h3>
-                    <p>Have casual conversations to build confidence and fluency naturally</p>
-                </div>
-                <div class="avatar-card glass" onclick="selectAvatar('client', '🧑‍💻')">
-                    <span class="avatar-icon">🧑‍💻</span>
-                    <h3>Client</h3>
-                    <p>Simulate business meetings and client discussions professionally</p>
-                </div>
-                <div class="avatar-card glass" onclick="selectAvatar('coach', '🗣️')">
-                    <span class="avatar-icon">🗣️</span>
-                    <h3>Presentation Coach</h3>
-                    <p>Master public speaking and presentation skills with expert guidance</p>
-                </div>
-                <div class="avatar-card glass" onclick="selectAvatar('partner', '🧑‍🏫')">
-                    <span class="avatar-icon">🧑‍🏫</span>
-                    <h3>Meeting Partner</h3>
-                    <p>Practice corporate meetings and professional communication scenarios</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Context Input Screen -->
-        <div id="contextInputScreen" class="hidden">
-            <div class="context-input glass">
-                <h2 id="contextQuestion">Loading...</h2>
-                <input type="text" id="contextInput" placeholder="Type your answer here...">
-                <button class="btn" onclick="startConversation()">Start Practice Session</button>
-            </div>
-        </div>
-
-        <!-- Conversation Screen -->
-        <div id="conversationScreen" class="hidden">
-            <div class="conversation-screen">
-                <div class="main-area glass">
-                    <div class="avatar-display">
-                        <div class="avatar-image" id="avatarImage">👩‍🏫</div>
-                        <h2 id="avatarName">Teacher</h2>
-                        <div class="waveform hidden" id="waveform">
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                            <div class="wave-bar"></div>
-                        </div>
-                    </div>
-
-                    <div class="subtitle-box" id="subtitleBox">
-                        Click the microphone to start speaking...
-                    </div>
-
-                    <div class="controls">
-                        <button class="control-btn" onclick="endSession()" title="End Session">⏹️</button>
-                        <button class="mic-btn" id="micBtn" onclick="toggleMic()">🎤</button>
-                        <button class="control-btn" onclick="getReport()" title="Get Report">📊</button>
+        <!-- Role Selection Page -->
+        <div id="roleSelectionPage" class="role-selection hidden">
+            <h2>Choose Your Practice Role</h2>
+            <div class="role-grid">
+                <div class="role-card" onclick="selectRole('interviewer', '🧑‍💼')">
+                    <div class="role-card-content">
+                        <span class="role-icon">🧑‍💼</span>
+                        <h3>Interviewer</h3>
+                        <p>Practice job interviews with realistic questions and professional feedback</p>
                     </div>
                 </div>
-
-                <div class="sidebar">
-                    <div class="stat-card glass">
-                        <h3 id="messageCount">0</h3>
-                        <p>Messages</p>
+                <div class="role-card" onclick="selectRole('teacher', '👩‍🏫')">
+                    <div class="role-card-content">
+                        <span class="role-icon">👩‍🏫</span>
+                        <h3>Teacher</h3>
+                        <p>Learn English with clear explanations and patient guidance</p>
                     </div>
-                    <div class="stat-card glass">
-                        <h3 id="mistakeCount">0</h3>
-                        <p>Corrections</p>
+                </div>
+                <div class="role-card" onclick="selectRole('client', '🧑‍💻')">
+                    <div class="role-card-content">
+                        <span class="role-icon">🧑‍💻</span>
+                        <h3>Client</h3>
+                        <p>Simulate business client meetings and professional discussions</p>
                     </div>
-                    <div class="stat-card glass">
-                        <h3 id="durationDisplay">00:00</h3>
-                        <p>Duration</p>
+                </div>
+                <div class="role-card" onclick="selectRole('partner', '🤝')">
+                    <div class="role-card-content">
+                        <span class="role-icon">🤝</span>
+                        <h3>Meeting Partner</h3>
+                        <p>Practice corporate meetings and team collaboration</p>
                     </div>
-
-                    <div class="transcript glass">
-                        <h3>Conversation</h3>
-                        <div id="transcriptList"></div>
+                </div>
+                <div class="role-card" onclick="selectRole('sales', '💼')">
+                    <div class="role-card-content">
+                        <span class="role-icon">💼</span>
+                        <h3>Sales Trainer</h3>
+                        <p>Master sales pitches and persuasive communication</p>
+                    </div>
+                </div>
+                <div class="role-card" onclick="selectRole('coach', '🗣️')">
+                    <div class="role-card-content">
+                        <span class="role-icon">🗣️</span>
+                        <h3>Communication Coach</h3>
+                        <p>Improve fluency, grammar, and speaking confidence</p>
+                    </div>
+                </div>
+                <div class="role-card" onclick="selectRole('hr', '👔')">
+                    <div class="role-card-content">
+                        <span class="role-icon">👔</span>
+                        <h3>HR Interviewer</h3>
+                        <p>Practice HR interviews and behavioral questions</p>
+                    </div>
+                </div>
+                <div class="role-card" onclick="selectRole('custom', '⚙️')">
+                    <div class="role-card-content">
+                        <span class="role-icon">⚙️</span>
+                        <h3>Custom Role</h3>
+                        <p>Create your own scenario and practice freely</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Report Screen -->
-        <div id="reportScreen" class="hidden">
-            <div class="report-screen glass">
-                <div class="report-header">
-                    <h2>📊 Performance Report</h2>
-                    <p>Session with <span id="reportAvatar"></span></p>
-                </div>
-
-                <div class="score-grid">
-                    <div class="score-card glass" id="grammarCard">
-                        <div class="score-value" id="grammarScore">0%</div>
-                        <p>Grammar Accuracy</p>
-                    </div>
-                    <div class="score-card glass" id="vocabularyCard">
-                        <div class="score-value" id="vocabularyScore">0%</div>
-                        <p>Vocabulary Score</p>
-                    </div>
-                    <div class="score-card glass" id="fluencyCard">
-                        <div class="score-value" id="fluencyScore">0%</div>
-                        <p>Fluency Score</p>
-                    </div>
-                    <div class="score-card glass" id="confidenceCard">
-                        <div class="score-value" id="confidenceScore">0%</div>
-                        <p>Confidence Level</p>
-                    </div>
-                </div>
-
-                <div class="mistakes-section glass">
-                    <h3>❌ Mistakes & Corrections</h3>
-                    <div id="mistakesList"></div>
-                </div>
-
-                <div class="recommendations glass">
-                    <h3>💡 Recommendations</h3>
-                    <ul id="recommendationsList"></ul>
-                </div>
-
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="btn" onclick="resetApp()">Start New Session</button>
-                </div>
+        <!-- Scenario Input Page -->
+        <div id="scenarioInputPage" class="scenario-input hidden">
+            <div style="text-align: center;">
+                <span class="selected-role-badge" id="selectedRoleBadge"></span>
+            </div>
+            <h2>Describe Your Scenario</h2>
+            <label>Enter the information I should use:</label>
+            <p class="example-text">
+                For example:<br>
+                • Company name and job role (for interviews)<br>
+                • Topic to teach (for teacher)<br>
+                • Meeting purpose and context<br>
+                • Scenario details<br>
+                <strong>You must enter new information every time.</strong>
+            </p>
+            <textarea id="scenarioText" placeholder="Type your scenario details here..."></textarea>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="showRoleSelection()">← Back</button>
+                <button class="btn btn-primary" onclick="startConversation()">Start Conversation →</button>
             </div>
         </div>
 
-        <!-- Loading Screen -->
-        <div id="loadingScreen" class="hidden">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>AI is thinking...</p>
+        <!-- Conversation Page -->
+        <div id="conversationPage" class="conversation-page hidden">
+            <div class="video-container">
+                <div class="avatar-wrapper">
+                    <div class="avatar" id="avatar">🧑‍💼</div>
+                    <div class="avatar-status">
+                        <span class="status-dot"></span>
+                        <span id="avatarStatusText">Ready to talk</span>
+                    </div>
+                </div>
             </div>
+
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h3 id="chatRoleTitle">Conversation</h3>
+                </div>
+                <div class="chat-messages" id="chatMessages"></div>
+                <div class="chat-input-area">
+                    <input type="text" class="chat-input" id="chatInput" placeholder="Type your message..." onkeypress="handleEnter(event)">
+                    <button class="send-btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <button class="end-session-btn" onclick="endSession()">End Session & Start New</button>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Powered by <strong>Bhindi AI</strong> — Completely Free</p>
+    </footer>
+
+    <!-- Hidden listening indicator -->
+    <div class="listening-indicator" id="listeningIndicator"></div>
 
     <script>
         // Configuration
         const CHATGPT_API_KEY = '368fb1f1eemshb2a2e312bdee2f4p1dd8f5jsn0800d85fd685';
         const CHATGPT_API_URL = 'https://chatgpt-42.p.rapidapi.com/gpt4';
 
-        // App State
-        let currentAvatar = null;
-        let avatarIcon = null;
-        let context = '';
+        // State
+        let currentRole = null;
+        let roleIcon = null;
+        let scenarioDetails = '';
         let conversationHistory = [];
-        let mistakes = [];
-        let sessionStartTime = null;
-        let durationInterval = null;
-        let isListening = false;
-        let isSpeaking = false;
+        let messageCount = 0;
         let recognition = null;
         let synth = window.speechSynthesis;
         let selectedVoice = null;
+        let isSpeaking = false;
+        let isListening = false;
 
-        // Avatar Configurations
-        const avatarConfigs = {
-            teacher: {
-                name: 'English Teacher',
-                question: 'What aspect of English would you like to focus on? (Grammar, Vocabulary, Pronunciation, or General Practice)',
-                systemPrompt: 'You are a patient and encouraging English teacher. Help users improve their grammar, vocabulary, and pronunciation. After each user response, gently correct mistakes and explain why. Keep responses concise (2-3 sentences). Always be supportive and motivating.'
-            },
+        // Role configurations
+        const roleConfigs = {
             interviewer: {
                 name: 'Job Interviewer',
-                question: 'What job role are you preparing for? (e.g., Software Engineer, Marketing Manager, Sales Executive)',
-                systemPrompt: 'You are a professional job interviewer. Ask realistic interview questions one by one based on the job role. After each answer, provide brief feedback on communication style and suggest improvements. Be professional but friendly. Keep questions focused and responses concise.'
+                icon: '🧑‍💼',
+                systemPrompt: 'You are a professional job interviewer. Use the scenario details provided to conduct a realistic job interview. Ask relevant questions one by one. After every 2-3 user responses, provide a correction block with grammar fixes, better sentences, and tips. Keep responses short (2-3 sentences). Be professional but friendly. Stay in character until user says "stop roleplay".'
             },
-            friend: {
-                name: 'Friendly Companion',
-                question: 'What topics interest you? (e.g., Movies, Sports, Travel, Technology, Food)',
-                systemPrompt: 'You are a friendly English-speaking companion. Have casual, natural conversations about everyday topics. Gently correct major mistakes but keep the conversation flowing naturally. Be enthusiastic and encouraging. Keep responses conversational and brief (2-3 sentences).'
+            teacher: {
+                name: 'English Teacher',
+                icon: '👩‍🏫',
+                systemPrompt: 'You are a patient English teacher. Teach the topic mentioned in the scenario using simple English and clear examples. After every 2-3 user responses, provide corrections with grammar fixes, better phrasing, and learning tips. Keep explanations short and easy. Ask practice questions. Stay in character until user says "stop roleplay".'
             },
             client: {
                 name: 'Business Client',
-                question: 'What type of business scenario would you like to practice? (e.g., Project Discussion, Negotiation, Presentation)',
-                systemPrompt: 'You are a business client in a professional meeting. Discuss projects, ask questions about deliverables, and engage in business conversations. Provide feedback on professional communication tone. Be direct but polite. Keep responses business-focused and concise.'
-            },
-            coach: {
-                name: 'Presentation Coach',
-                question: 'What type of presentation are you preparing? (e.g., Sales Pitch, Technical Talk, Conference Speech)',
-                systemPrompt: 'You are a presentation and public speaking coach. Help users practice their presentation skills. Give feedback on clarity, structure, and delivery. Suggest better phrasing and more impactful words. Be constructive and specific. Keep feedback actionable and brief.'
+                icon: '🧑‍💻',
+                systemPrompt: 'You are a business client in a professional meeting. Use the scenario context to discuss projects, ask for updates, and communicate professionally. After every 2-3 user responses, provide correction feedback on communication style. Keep responses brief and business-focused. Stay in character until user says "stop roleplay".'
             },
             partner: {
                 name: 'Meeting Partner',
-                question: 'What type of meeting would you like to simulate? (e.g., Team Standup, Strategy Discussion, Performance Review)',
-                systemPrompt: 'You are a corporate colleague in a professional meeting. Discuss work topics, share ideas, and provide feedback on communication effectiveness. Help improve professional vocabulary and tone. Be collaborative and supportive. Keep responses meeting-appropriate and concise.'
+                icon: '🤝',
+                systemPrompt: 'You are a corporate colleague in a team meeting. Discuss the meeting topic from the scenario collaboratively. After every 2-3 user responses, provide corrections and suggest better professional phrasing. Keep responses conversational and meeting-appropriate. Stay in character until user says "stop roleplay".'
+            },
+            sales: {
+                name: 'Sales Trainer',
+                icon: '💼',
+                systemPrompt: 'You are a sales training expert. Help practice sales pitches based on the scenario. After every 2-3 user responses, provide corrections on tone, delivery, and persuasiveness. Give specific tips to improve sales communication. Keep feedback actionable and brief. Stay in character until user says "stop roleplay".'
+            },
+            coach: {
+                name: 'Communication Coach',
+                icon: '🗣️',
+                systemPrompt: 'You are a communication and fluency coach. Focus heavily on correcting mistakes. After EVERY user response, provide detailed corrections: grammar errors, better sentences, and fluency tips. Be encouraging but thorough in corrections. Keep responses focused on improvement. Stay in character until user says "stop roleplay".'
+            },
+            hr: {
+                name: 'HR Interviewer',
+                icon: '👔',
+                systemPrompt: 'You are an HR interviewer conducting behavioral interviews. Use the scenario to ask HR-style questions (STAR method, culture fit, soft skills). After every 2-3 user responses, provide corrections and suggest more professional phrasing. Keep questions realistic and responses brief. Stay in character until user says "stop roleplay".'
+            },
+            custom: {
+                name: 'Custom Role',
+                icon: '⚙️',
+                systemPrompt: 'Follow the exact instructions provided in the scenario. Adopt the role and personality described. After every 2-3 user responses, provide corrections with grammar fixes and better phrasing. Stay completely in character as described. Exit character only if user says "stop roleplay".'
             }
         };
 
-        // Initialize Speech Recognition
+        // Initialize speech recognition (hidden)
         if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             recognition = new SpeechRecognition();
@@ -769,19 +832,31 @@
 
             recognition.onresult = (event) => {
                 const transcript = event.results[event.results.length - 1][0].transcript;
-                handleUserSpeech(transcript);
+                document.getElementById('chatInput').value = transcript;
+                sendMessage();
             };
 
-            recognition.onerror = (event) => {
-                console.error('Speech recognition error:', event.error);
-                if (event.error !== 'no-speech') {
-                    showSubtitle('Sorry, I couldn\'t hear you clearly. Please try again.');
-                }
+            recognition.onstart = () => {
+                isListening = true;
+                document.getElementById('listeningIndicator').classList.add('active');
             };
 
             recognition.onend = () => {
-                if (isListening && !isSpeaking) {
-                    recognition.start(); // Auto-restart for continuous listening
+                isListening = false;
+                document.getElementById('listeningIndicator').classList.remove('active');
+                // Auto-restart if not speaking
+                if (!isSpeaking && document.getElementById('conversationPage').classList.contains('hidden') === false) {
+                    setTimeout(() => {
+                        if (!isSpeaking) {
+                            recognition.start();
+                        }
+                    }, 500);
+                }
+            };
+
+            recognition.onerror = (event) => {
+                if (event.error !== 'no-speech') {
+                    console.error('Speech recognition error:', event.error);
                 }
             };
         }
@@ -798,123 +873,95 @@
             synth.onvoiceschanged = loadVoices;
         }
 
-        // Theme Toggle
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const toggle = document.querySelector('.theme-toggle');
-            toggle.textContent = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
+        // Navigation
+        function showLanding() {
+            hideAll();
+            document.getElementById('landingPage').classList.remove('hidden');
         }
 
-        // Select Avatar
-        function selectAvatar(type, icon) {
-            currentAvatar = type;
-            avatarIcon = icon;
-            const config = avatarConfigs[type];
+        function showRoleSelection() {
+            hideAll();
+            document.getElementById('roleSelectionPage').classList.remove('hidden');
+        }
+
+        function hideAll() {
+            document.getElementById('landingPage').classList.add('hidden');
+            document.getElementById('roleSelectionPage').classList.add('hidden');
+            document.getElementById('scenarioInputPage').classList.add('hidden');
+            document.getElementById('conversationPage').classList.add('hidden');
+        }
+
+        // Select role
+        function selectRole(role, icon) {
+            currentRole = role;
+            roleIcon = icon;
+            const config = roleConfigs[role];
             
-            document.getElementById('avatarSelectionScreen').classList.add('hidden');
-            document.getElementById('contextInputScreen').classList.remove('hidden');
-            document.getElementById('contextQuestion').textContent = config.question;
+            hideAll();
+            document.getElementById('scenarioInputPage').classList.remove('hidden');
+            document.getElementById('selectedRoleBadge').textContent = `${icon} ${config.name}`;
+            document.getElementById('scenarioText').value = '';
+            document.getElementById('scenarioText').focus();
         }
 
-        // Start Conversation
+        // Start conversation
         async function startConversation() {
-            context = document.getElementById('contextInput').value.trim();
-            if (!context) {
-                alert('Please provide context for the conversation');
+            scenarioDetails = document.getElementById('scenarioText').value.trim();
+            
+            if (!scenarioDetails) {
+                alert('Please enter scenario details before starting the conversation.');
                 return;
             }
 
-            document.getElementById('contextInputScreen').classList.add('hidden');
-            document.getElementById('conversationScreen').classList.remove('hidden');
+            // Reset state (NO MEMORY)
+            conversationHistory = [];
+            messageCount = 0;
 
-            const config = avatarConfigs[currentAvatar];
-            document.getElementById('avatarImage').textContent = avatarIcon;
-            document.getElementById('avatarName').textContent = config.name;
+            hideAll();
+            document.getElementById('conversationPage').classList.remove('hidden');
+            
+            const config = roleConfigs[currentRole];
+            document.getElementById('avatar').textContent = roleIcon;
+            document.getElementById('chatRoleTitle').textContent = `Conversation with ${config.name}`;
+            document.getElementById('chatMessages').innerHTML = '';
 
-            sessionStartTime = Date.now();
-            startDurationTimer();
-
-            // Initial AI greeting
-            const greeting = await getAIResponse(`User context: ${context}. Start the conversation with a brief, friendly greeting and first question.`);
-            addToTranscript('AI', greeting);
-            showSubtitle(greeting);
-            await speak(greeting);
-
-            // Start listening
-            startListening();
-        }
-
-        // Toggle Microphone
-        function toggleMic() {
-            if (isListening) {
-                stopListening();
-            } else {
-                startListening();
-            }
-        }
-
-        // Start Listening
-        function startListening() {
-            if (!recognition) {
-                alert('Speech recognition not supported in this browser');
-                return;
-            }
-
-            isListening = true;
-            recognition.start();
-            document.getElementById('micBtn').classList.add('listening');
-            showSubtitle('Listening... Speak now');
-        }
-
-        // Stop Listening
-        function stopListening() {
-            isListening = false;
+            // Start listening automatically (hidden)
             if (recognition) {
-                recognition.stop();
-            }
-            document.getElementById('micBtn').classList.remove('listening');
-        }
-
-        // Handle User Speech
-        async function handleUserSpeech(text) {
-            if (!text.trim() || isSpeaking) return;
-
-            stopListening();
-            addToTranscript('You', text);
-            showSubtitle(`You: ${text}`);
-
-            // Analyze mistakes
-            const mistakeAnalysis = analyzeMistakes(text);
-            if (mistakeAnalysis.length > 0) {
-                mistakes.push(...mistakeAnalysis);
-                updateMistakeCount();
+                setTimeout(() => {
+                    recognition.start();
+                }, 1000);
             }
 
-            // Get AI response
-            showLoading(true);
-            const response = await getAIResponse(text);
-            showLoading(false);
-
-            addToTranscript('AI', response);
-            showSubtitle(response);
-            await speak(response);
-
-            // Resume listening
-            startListening();
+            // Get initial AI greeting
+            updateAvatarStatus('Thinking...');
+            const greeting = await getAIResponse('START_CONVERSATION');
+            addMessage(greeting, 'ai');
+            await speak(greeting);
+            updateAvatarStatus('Listening...');
         }
 
-        // Get AI Response from ChatGPT
+        // Get AI response
         async function getAIResponse(userMessage) {
             try {
-                const config = avatarConfigs[currentAvatar];
+                const config = roleConfigs[currentRole];
                 
-                // Build conversation context (keep last 10 messages)
-                const recentHistory = conversationHistory.slice(-10);
-                const messages = [
-                    { role: 'system', content: config.systemPrompt + ` User context: ${context}` },
-                    ...recentHistory,
-                    { role: 'user', content: userMessage }
+                const systemPrompt = `${config.systemPrompt}\n\nScenario Details: ${scenarioDetails}\n\nIMPORTANT: Keep all responses short (2-3 sentences maximum). After every 2-3 user messages, include a correction block.`;
+
+                let messages = [
+                    { role: 'system', content: systemPrompt }
                 ];
+
+                if (userMessage === 'START_CONVERSATION') {
+                    messages.push({
+                        role: 'user',
+                        content: 'Start the conversation with a brief greeting and first question based on the scenario.'
+                    });
+                } else {
+                    // Add recent history (last 6 messages)
+                    const recentHistory = conversationHistory.slice(-6);
+                    messages.push(...recentHistory);
+                    messages.push({ role: 'user', content: userMessage });
+                }
 
                 const response = await fetch(CHATGPT_API_URL, {
                     method: 'POST',
@@ -930,46 +977,116 @@
                 });
 
                 const data = await response.json();
-                const aiResponse = data.result || 'I apologize, I didn\'t quite understand that. Could you rephrase?';
-                
-                conversationHistory.push({ role: 'user', content: userMessage });
+                const aiResponse = data.result || 'I apologize, could you please repeat that?';
+
+                // Save to history
+                if (userMessage !== 'START_CONVERSATION') {
+                    conversationHistory.push({ role: 'user', content: userMessage });
+                }
                 conversationHistory.push({ role: 'assistant', content: aiResponse });
 
                 return aiResponse;
+
             } catch (error) {
-                console.error('ChatGPT API Error:', error);
-                return 'I\'m having trouble connecting right now. Let\'s continue - what would you like to talk about?';
+                console.error('API Error:', error);
+                return 'I\'m having trouble connecting. Let\'s continue - what would you like to discuss?';
             }
         }
 
-        // Speak (Text-to-Speech)
+        // Send message
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Stop listening while processing
+            if (recognition && isListening) {
+                recognition.stop();
+            }
+
+            input.value = '';
+            messageCount++;
+
+            addMessage(message, 'user');
+            updateAvatarStatus('Thinking...');
+
+            const response = await getAIResponse(message);
+            addMessage(response, 'ai');
+            
+            updateAvatarStatus('Speaking...');
+            await speak(response);
+            updateAvatarStatus('Listening...');
+
+            // Resume listening
+            if (recognition && !isListening) {
+                setTimeout(() => {
+                    recognition.start();
+                }, 500);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messagesDiv = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message';
+
+            const isAI = sender === 'ai';
+            const icon = isAI ? roleIcon : '👤';
+
+            // Check if message contains correction
+            let mainText = text;
+            let correctionText = '';
+
+            if (text.includes('✔') || text.includes('Correction:') || text.includes('Better:')) {
+                const parts = text.split(/(?=✔|Correction:|Better:)/);
+                mainText = parts[0];
+                correctionText = parts.slice(1).join('\n');
+            }
+
+            messageDiv.innerHTML = `
+                <div class="message-avatar ${isAI ? 'ai' : 'user'}">
+                    <div class="message-icon ${isAI ? 'ai' : 'user'}">${icon}</div>
+                    <div class="message-content">
+                        ${mainText}
+                        ${correctionText ? `<div class="correction-box"><strong>💡 Feedback:</strong><br>${correctionText}</div>` : ''}
+                    </div>
+                </div>
+            `;
+
+            messagesDiv.appendChild(messageDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        // Speak (TTS)
         function speak(text) {
             return new Promise((resolve) => {
                 if (isSpeaking) {
                     synth.cancel();
                 }
 
-                const utterance = new SpeechSynthesisUtterance(text);
+                // Remove correction markers from speech
+                const cleanText = text.replace(/✔|Correction:|Better:|Tip:/g, '').trim();
+
+                const utterance = new SpeechSynthesisUtterance(cleanText);
                 utterance.voice = selectedVoice;
-                utterance.rate = 0.9;
+                utterance.rate = 0.95;
                 utterance.pitch = 1;
                 utterance.volume = 1;
 
                 isSpeaking = true;
-                document.getElementById('avatarImage').classList.add('speaking');
-                document.getElementById('waveform').classList.remove('hidden');
+                document.getElementById('avatar').classList.add('speaking');
 
                 utterance.onend = () => {
                     isSpeaking = false;
-                    document.getElementById('avatarImage').classList.remove('speaking');
-                    document.getElementById('waveform').classList.add('hidden');
+                    document.getElementById('avatar').classList.remove('speaking');
                     resolve();
                 };
 
                 utterance.onerror = () => {
                     isSpeaking = false;
-                    document.getElementById('avatarImage').classList.remove('speaking');
-                    document.getElementById('waveform').classList.add('hidden');
+                    document.getElementById('avatar').classList.remove('speaking');
                     resolve();
                 };
 
@@ -977,187 +1094,35 @@
             });
         }
 
-        // Analyze Mistakes
-        function analyzeMistakes(text) {
-            const foundMistakes = [];
-            const rules = [
-                { wrong: /\bi am working from\b/gi, correct: 'I have been working for', type: 'Tense Error' },
-                { wrong: /\bhe don't\b/gi, correct: 'he doesn\'t', type: 'Subject-Verb Agreement' },
-                { wrong: /\bshe don't\b/gi, correct: 'she doesn\'t', type: 'Subject-Verb Agreement' },
-                { wrong: /\bmore better\b/gi, correct: 'better', type: 'Double Comparative' },
-                { wrong: /\bmuch people\b/gi, correct: 'many people', type: 'Countable/Uncountable' },
-                { wrong: /\bdidn't went\b/gi, correct: 'didn\'t go', type: 'Verb Form' }
-            ];
-
-            rules.forEach(rule => {
-                if (rule.wrong.test(text)) {
-                    const match = text.match(rule.wrong)[0];
-                    foundMistakes.push({
-                        wrong: match,
-                        correct: rule.correct,
-                        type: rule.type,
-                        sentence: text
-                    });
-                }
-            });
-
-            return foundMistakes;
+        // Update avatar status
+        function updateAvatarStatus(status) {
+            document.getElementById('avatarStatusText').textContent = status;
         }
 
-        // UI Updates
-        function showSubtitle(text) {
-            document.getElementById('subtitleBox').textContent = text;
+        // Handle Enter key
+        function handleEnter(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
         }
 
-        function addToTranscript(speaker, text) {
-            const transcriptList = document.getElementById('transcriptList');
-            const item = document.createElement('div');
-            item.className = `transcript-item ${speaker === 'You' ? 'user' : 'ai'}`;
-            item.innerHTML = `<strong>${speaker}:</strong> ${text}`;
-            transcriptList.appendChild(item);
-            transcriptList.scrollTop = transcriptList.scrollHeight;
-
-            updateMessageCount();
-        }
-
-        function updateMessageCount() {
-            const count = conversationHistory.length / 2;
-            document.getElementById('messageCount').textContent = Math.floor(count);
-        }
-
-        function updateMistakeCount() {
-            document.getElementById('mistakeCount').textContent = mistakes.length;
-        }
-
-        function startDurationTimer() {
-            durationInterval = setInterval(() => {
-                const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
-                const minutes = Math.floor(elapsed / 60);
-                const seconds = elapsed % 60;
-                document.getElementById('durationDisplay').textContent = 
-                    `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-            }, 1000);
-        }
-
-        function showLoading(show) {
-            document.getElementById('loadingScreen').classList.toggle('hidden', !show);
-        }
-
-        // End Session
+        // End session
         function endSession() {
-            if (confirm('Are you sure you want to end this session?')) {
-                stopListening();
+            if (confirm('End this session and start a new conversation?')) {
+                if (recognition && isListening) {
+                    recognition.stop();
+                }
                 synth.cancel();
-                clearInterval(durationInterval);
-                getReport();
+                
+                // Clear all data (NO MEMORY)
+                currentRole = null;
+                roleIcon = null;
+                scenarioDetails = '';
+                conversationHistory = [];
+                messageCount = 0;
+                
+                showLanding();
             }
-        }
-
-        // Generate Report
-        async function getReport() {
-            stopListening();
-            synth.cancel();
-            clearInterval(durationInterval);
-
-            document.getElementById('conversationScreen').classList.add('hidden');
-            document.getElementById('reportScreen').classList.remove('hidden');
-
-            const config = avatarConfigs[currentAvatar];
-            document.getElementById('reportAvatar').textContent = config.name;
-
-            // Calculate scores
-            const totalMessages = conversationHistory.length / 2;
-            const grammarScore = Math.max(0, 100 - (mistakes.length / totalMessages * 20));
-            const vocabularyScore = Math.min(100, totalMessages * 5);
-            const fluencyScore = Math.min(100, totalMessages * 8);
-            const confidenceScore = Math.min(100, totalMessages * 6);
-
-            // Display scores with color coding
-            displayScore('grammar', grammarScore);
-            displayScore('vocabulary', vocabularyScore);
-            displayScore('fluency', fluencyScore);
-            displayScore('confidence', confidenceScore);
-
-            // Display mistakes
-            const mistakesList = document.getElementById('mistakesList');
-            if (mistakes.length > 0) {
-                mistakesList.innerHTML = mistakes.map(m => `
-                    <div class="mistake-item">
-                        <strong>${m.type}</strong><br>
-                        ❌ <span class="mistake-wrong">${m.wrong}</span><br>
-                        ✅ <span class="mistake-correct">${m.correct}</span>
-                    </div>
-                `).join('');
-            } else {
-                mistakesList.innerHTML = '<p style="text-align: center; padding: 20px;">🎉 Excellent! No major mistakes detected!</p>';
-            }
-
-            // Generate recommendations
-            const recommendations = generateRecommendations(grammarScore, vocabularyScore, fluencyScore);
-            document.getElementById('recommendationsList').innerHTML = recommendations.map(r => `<li>${r}</li>`).join('');
-        }
-
-        function displayScore(type, score) {
-            const scoreElement = document.getElementById(`${type}Score`);
-            const cardElement = document.getElementById(`${type}Card`);
-            
-            scoreElement.textContent = Math.round(score) + '%';
-            
-            cardElement.classList.remove('warning', 'danger');
-            if (score < 60) {
-                cardElement.classList.add('danger');
-            } else if (score < 80) {
-                cardElement.classList.add('warning');
-            }
-        }
-
-        function generateRecommendations(grammar, vocabulary, fluency) {
-            const recommendations = [];
-            
-            if (grammar < 70) {
-                recommendations.push('📚 Focus on basic grammar rules - practice tenses and sentence structure');
-                recommendations.push('✍️ Try writing exercises to reinforce grammar concepts');
-            } else if (grammar < 90) {
-                recommendations.push('📖 Good grammar foundation! Work on complex sentence structures');
-            } else {
-                recommendations.push('🌟 Excellent grammar! Keep practicing advanced structures');
-            }
-
-            if (vocabulary < 70) {
-                recommendations.push('📝 Expand your vocabulary - learn 5 new words daily');
-                recommendations.push('📚 Read English articles and books regularly');
-            } else {
-                recommendations.push('💡 Great vocabulary! Try using more idiomatic expressions');
-            }
-
-            if (fluency < 70) {
-                recommendations.push('🗣️ Practice speaking daily - even 10 minutes helps');
-                recommendations.push('🎧 Listen to English podcasts and repeat phrases');
-            } else {
-                recommendations.push('🚀 Excellent fluency! Try more complex conversations');
-            }
-
-            recommendations.push('💪 Keep practicing regularly - consistency is key!');
-            recommendations.push(`🎯 Try practicing with different avatars for varied scenarios`);
-
-            return recommendations;
-        }
-
-        // Reset App
-        function resetApp() {
-            currentAvatar = null;
-            avatarIcon = null;
-            context = '';
-            conversationHistory = [];
-            mistakes = [];
-            sessionStartTime = null;
-            
-            document.getElementById('reportScreen').classList.add('hidden');
-            document.getElementById('avatarSelectionScreen').classList.remove('hidden');
-            document.getElementById('transcriptList').innerHTML = '';
-            document.getElementById('messageCount').textContent = '0';
-            document.getElementById('mistakeCount').textContent = '0';
-            document.getElementById('durationDisplay').textContent = '00:00';
         }
     </script>
 </body>
